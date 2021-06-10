@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Ktbmyo Blog</title>
+    <style>
+      .sayfa table {
+        background-color: transparent;
+        border: 1px solid #ddd;
+        width:100% !important;
+        margin-bottom:10px;
+        font-size:12px;
+      
+      }
+      .sayfa-icerik caption {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: #777;
+        text-align: left;
+      }
+      .sayfa-icerik > th {
+        text-align: left;
+      }
+      .sayfa-icerik > table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+      .sayfa table > thead > tr > th,
+      .sayfa table > tbody > tr > th,
+      .sayfa table > tfoot > tr > th,
+      .sayfa table > thead > tr > td,
+      .sayfa table > tbody > tr > td,
+      .sayfa table > tfoot > tr > td {
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border: 1px solid #ddd;
+        
+      }
+      .sayfa table > thead > tr > th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+        background:#f1f1f1;
+        font-size:16px;
+      
+      }
+      
+      .sayfa table > tbody + tbody {
+        border-top: 2px solid #ddd;
+      }
+      
+      .sayfa table > tbody > tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+      }
+      .sayfa table > tbody > tr:hover {
+        background-color: #f5f5f5;
+      }
+      .sayfa table col[class*="col-"] {
+        position: static;
+        display: table-column;
+        float: none;
+      }
+      .sayfa table td[class*="col-"],
+      .sayfa table th[class*="col-"] {
+        position: static;
+        display: table-cell;
+        float: none;
+      }
+      .sayfa table > thead > tr > td.active,
+      .sayfa table > tbody > tr > td.active,
+      .sayfa table > tfoot > tr > td.active,
+      .sayfa table > thead > tr > th.active,
+      .sayfa table > tbody > tr > th.active,
+      .sayfa table > tfoot > tr > th.active,
+      .sayfa table > thead > tr.active > td,
+      .sayfa table > tbody > tr.active > td,
+      .sayfa table > tfoot > tr.active > td,
+      .sayfa table > thead > tr.active > th,
+      .sayfa table > tbody > tr.active > th,
+      .sayfa table > tfoot > tr.active > th {
+        background-color: #f5f5f5;
+      }
+      .sayfa table > tbody > tr > td.active:hover,
+      .sayfa table > tbody > tr > th.active:hover,
+      .sayfa table > tbody > tr.active:hover > td,
+      .sayfa table > tbody > tr:hover > .active,
+      .sayfa table > tbody > tr.active:hover > th {
+        background-color: #e8e8e8;
+      }
+      .sayfa table > thead > tr > td.success,
+      .sayfa table > tbody > tr > td.success,
+      .sayfa table > tfoot > tr > td.success,
+      .sayfa table > thead > tr > th.success,
+      .sayfa table > tbody > tr > th.success,
+      .sayfa table > tfoot > tr > th.success,
+      .sayfa table > thead > tr.success > td,
+      .sayfa table > tbody > tr.success > td,
+      .sayfa table > tfoot > tr.success > td,
+      .sayfa table > thead > tr.success > th,
+      .sayfa table > tbody > tr.success > th,
+      .sayfa table > tfoot > tr.success > th {
+        background-color: #dff0d8;
+      }
+      .sayfa table > tbody > tr > td.success:hover,
+      .sayfa table > tbody > tr > th.success:hover,
+      .sayfa table > tbody > tr.success:hover > td,
+      .sayfa table > tbody > tr:hover > .success,
+      .sayfa table > tbody > tr.success:hover > th {
+        background-color: #d0e9c6;
+      }
+      .sayfa table > thead > tr > td.info,
+      .sayfa table > tbody > tr > td.info,
+      .sayfa table > tfoot > tr > td.info,
+      .sayfa table > thead > tr > th.info,
+      .sayfa table > tbody > tr > th.info,
+      .sayfa table > tfoot > tr > th.info,
+      .sayfa table > thead > tr.info > td,
+      .sayfa table > tbody > tr.info > td,
+      .sayfa table > tfoot > tr.info > td,
+      .sayfa table > thead > tr.info > th,
+      .sayfa table > tbody > tr.info > th,
+      .sayfa table > tfoot > tr.info > th {
+        background-color: #d9edf7;
+      }
+      .sayfa table > tbody > tr > td.info:hover,
+      .sayfa table > tbody > tr > th.info:hover,
+      .sayfa table > tbody > tr.info:hover > td,
+      .sayfa table > tbody > tr:hover > .info,
+      .sayfa table > tbody > tr.info:hover > th {
+        background-color: #c4e3f3;
+      }
+      .sayfa table > thead > tr > td.warning,
+      .sayfa table > tbody > tr > td.warning,
+      .sayfa table > tfoot > tr > td.warning,
+      .sayfa table > thead > tr > th.warning,
+      .sayfa table > tbody > tr > th.warning,
+      .sayfa table > tfoot > tr > th.warning,
+      .sayfa table > thead > tr.warning > td,
+      .sayfa table > tbody > tr.warning > td,
+      .sayfa table > tfoot > tr.warning > td,
+      .sayfa table > thead > tr.warning > th,
+      .sayfa table > tbody > tr.warning > th,
+      .sayfa table > tfoot > tr.warning > th {
+        background-color: #fcf8e3;
+      }
+      .sayfa table > tbody > tr > td.warning:hover,
+      .sayfa table > tbody > tr > th.warning:hover,
+      .sayfa table > tbody > tr.warning:hover > td,
+      .sayfa table > tbody > tr:hover > .warning,
+      .sayfa table > tbody > tr.warning:hover > th {
+        background-color: #faf2cc;
+      }
+      .sayfa table > thead > tr > td.danger,
+      .sayfa table > tbody > tr > td.danger,
+      .sayfa table > tfoot > tr > td.danger,
+      .sayfa table > thead > tr > th.danger,
+      .sayfa table > tbody > tr > th.danger,
+      .sayfa table > tfoot > tr > th.danger,
+      .sayfa table > thead > tr.danger > td,
+      .sayfa table > tbody > tr.danger > td,
+      .sayfa table > tfoot > tr.danger > td,
+      .sayfa table > thead > tr.danger > th,
+      .sayfa table > tbody > tr.danger > th,
+      .sayfa table > tfoot > tr.danger > th {
+        background-color: #f2dede;
+      }
+      .sayfa table > tbody > tr > td.danger:hover,
+      .sayfa table > tbody > tr > th.danger:hover,
+      .sayfa table > tbody > tr.danger:hover > td,
+      .sayfa table > tbody > tr:hover > .danger,
+      .sayfa table > tbody > tr.danger:hover > th {
+        background-color: #ebcccc;
+      }
+      .sayfa table {
+        min-height: .01%;
+        overflow-x: auto;
+      }
+    </style>
+</head>
+<body>
+  {% include "includes/navbar.html" %}
+  <div style="margin-top: 120px; margin-bottom: 120px;" class="container">
+    {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == "info" %} 
+          <div class="alert alert-danger"> {{ message }} </div> 
+          {% else %}
+          <div class="alert alert-{{ message.tags }}"> {{ message }} </div>
+          {% endif %}
+        {% endfor %}
+    {% endif %}
+  {% block body %} {% endblock %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

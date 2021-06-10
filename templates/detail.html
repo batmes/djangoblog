@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <!-- Post content-->
+        <div class="col-lg-8">
+            <!-- Title-->
+            <h2 class="mt-4">{{ article.title }}</h2>
+            <!-- Author-->
+            <p class="lead">
+                Yazar: {{ article.author.username }}
+            </p>
+            <hr>
+            <!-- Date and time-->
+            <p>Paylaşım tarihi {{ article.created_date }}</p>
+            <hr>
+            <!-- Preview Image-->
+            {% if article.article_image %}
+            <img class="img-fluid rounded" src="{{ article.article_image.url }}" alt="">
+            {% endif %}
+            <!-- Post content-->
+            <p class="lead">{{ article.content | safe }}</p>
+            </hr>
+             <!-- Comments form-->
+            <div class="card my-4">
+                <h5 class="card-header">Yorum Ekle</h5>
+                <div class="card-body">
+                    <form method="POST"action="{% url 'article:comment' article.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">İsim</label>
+                        <input name="comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="İsiminizi Giriniz.">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Yorum</label>
+                        <textarea name="comment_content" class="form-control" rows="3" placeholder="Yorumunuzu Giriniz."></textarea>
+                    </div>
+                    <button class="btn btn-success" type="submit">Ekle</button>
+                    </form>
+                </div>
+            </div>
+            <h4>Yorumlar</h4>
+            <hr>
+            {% if comment %}
+                {% for comments in comment %}
+                <!-- Single comment-->
+                <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="...">
+                    <div class="media-body">
+                        <h5 class="mt-0">{{ comments.comment_author }}</h5>
+                        <i>{{ comments.comment_date }}</i> <br> {{comments.comment_content }}
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="alert alert-danger">
+                    Bu makaleye yorum yazılmamış. İlk yorum siz yapan siz olun.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>   
+{% endblock body %}
